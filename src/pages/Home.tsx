@@ -1,9 +1,29 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight, Users, BookOpen, Award, MessageSquare, Download, Star } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { ReactNode } from 'react';
 
-const Home = () => {
-  const features = [
+interface Feature {
+  icon: ReactNode;
+  title: string;
+  description: string;
+}
+
+interface Step {
+  number: string;
+  title: string;
+  description: string;
+}
+
+interface Testimonial {
+  name: string;
+  role: string;
+  content: string;
+  rating: number;
+}
+
+const Home: React.FC = () => {
+  const features: Feature[] = [
     {
       icon: <BookOpen className="w-6 h-6" />,
       title: "Experience Library",
@@ -26,14 +46,14 @@ const Home = () => {
     }
   ];
 
-  const steps = [
+  const steps: Step[] = [
     { number: "01", title: "Sign Up", description: "Create your free account and join our community" },
     { number: "02", title: "Explore", description: "Browse experiences, ask questions, and download resources" },
     { number: "03", title: "Share", description: "Contribute your own experiences and help others succeed" },
     { number: "04", title: "Grow", description: "Build your network and advance your career" }
   ];
 
-  const testimonials = [
+  const testimonials: Testimonial[] = [
     {
       name: "Sarah Chen",
       role: "Software Engineer at Google",
@@ -130,7 +150,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* How It Works Section */}
+      {/* How It Works Section (Card Style) */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
@@ -151,12 +171,12 @@ const Home = () => {
             {steps.map((step, index) => (
               <motion.div
                 key={index}
-                className="text-center"
+                className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 text-center"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
               >
-                <div className="w-20 h-20 bg-gradient-to-br from-orange-500 to-teal-500 rounded-full flex items-center justify-center text-white font-bold text-2xl mb-6 mx-auto">
+                <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-teal-500 rounded-xl flex items-center justify-center text-white font-bold text-2xl mb-6 mx-auto shadow-md">
                   {step.number}
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-4">{step.title}</h3>
