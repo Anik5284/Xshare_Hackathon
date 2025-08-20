@@ -1,6 +1,6 @@
 import { useState, FormEvent } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Eye, EyeOff, Mail, Lock, User, CheckCircle } from 'lucide-react';
+import { Eye, EyeOff, Mail, Lock, User, CheckCircle, Phone } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useAuth } from '../hooks/useAuth';
 
@@ -9,6 +9,7 @@ const SignUp = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    contact: '',
     role: 'student' as 'student' | 'professional' | 'mentor',
     password: '',
     confirmPassword: ''
@@ -36,6 +37,10 @@ const SignUp = () => {
         }
         if (!/\S+@\S+\.\S+/.test(formData.email)) {
           setError('Please enter a valid email');
+          return false;
+        }
+        if (!formData.contact.trim()) {
+          setError('Contact number is required');
           return false;
         }
         return true;
@@ -106,6 +111,7 @@ const SignUp = () => {
     const success = await register({
       name: formData.name,
       email: formData.email,
+      contact: formData.contact,
       password: formData.password,
       role: formData.role
     });
@@ -193,6 +199,7 @@ const SignUp = () => {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.4 }}
               >
+                {/* Full Name */}
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
                     Full Name
@@ -211,6 +218,7 @@ const SignUp = () => {
                   </div>
                 </div>
 
+                {/* Email */}
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
                     Email Address
@@ -225,6 +233,25 @@ const SignUp = () => {
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-colors duration-200"
                       placeholder="Enter your email"
+                    />
+                  </div>
+                </div>
+
+                {/* Contact Number */}
+                <div>
+                  <label htmlFor="contact" className="block text-sm font-medium text-gray-700 mb-2">
+                    Contact Number
+                  </label>
+                  <div className="relative">
+                    <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                    <input
+                      id="contact"
+                      type="tel"
+                      required
+                      value={formData.contact}
+                      onChange={(e) => setFormData({ ...formData, contact: e.target.value })}
+                      className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-colors duration-200"
+                      placeholder="Enter your phone number"
                     />
                   </div>
                 </div>
