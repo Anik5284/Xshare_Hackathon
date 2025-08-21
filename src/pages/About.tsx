@@ -88,7 +88,7 @@ const About = () => {
         </div>
       </section>
 
-      {/* Stats Section */}
+      {/* Stats Section - Updated to Card Style */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
@@ -100,15 +100,17 @@ const About = () => {
             {stats.map((stat, index) => (
               <motion.div
                 key={index}
-                className="text-center"
+                className="bg-white rounded-2xl border-2 border-gray-200 shadow-md p-8 text-center 
+                           hover:border-orange-500 hover:shadow-lg transition-all duration-300"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
+                whileHover={{ scale: 1.05 }}
               >
                 <div className="text-4xl md:text-5xl font-bold text-gray-900 mb-2">
                   {stat.number}
                 </div>
-                <div className="text-gray-600 text-lg">{stat.label}</div>
+                <div className="text-gray-600 text-lg font-medium">{stat.label}</div>
               </motion.div>
             ))}
           </motion.div>
