@@ -88,7 +88,7 @@ const About = () => {
         </div>
       </section>
 
-      {/* Stats Section - Updated to Card Style */}
+      {/* Stats Section (gradient borders) */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
@@ -100,8 +100,9 @@ const About = () => {
             {stats.map((stat, index) => (
               <motion.div
                 key={index}
-                className="bg-white rounded-2xl border-2 border-gray-200 shadow-md p-8 text-center 
-                           hover:border-orange-500 hover:shadow-lg transition-all duration-300"
+                className="bg-white rounded-2xl border-2 border-transparent 
+                           shadow-md p-8 text-center 
+                           hover:border-orange-500 hover:shadow-xl transition-all duration-300"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
@@ -117,22 +118,24 @@ const About = () => {
         </div>
       </section>
 
-      {/* Story Section */}
+      {/* Story Section with Image */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+          <motion.div 
+            className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            {/* Text Content */}
+            <div>
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-8">
                 Our Story
               </h2>
               <div className="space-y-6 text-lg text-gray-600 leading-relaxed">
                 <p>
-                  XShare was born from a simple observation: the most valuable career advice 
-                  comes from those who've walked the path before you. As recent graduates ourselves, 
+                  XShare was born from a simple observation: the most valuable career advice comes 
+                  from those who've walked the path before you. As recent graduates ourselves, 
                   we experienced firsthand the challenges of transitioning from campus to career.
                 </p>
                 <p>
@@ -146,25 +149,26 @@ const About = () => {
                   to have helped thousands of individuals take the next step in their professional journey.
                 </p>
               </div>
-            </motion.div>
-            <motion.div
-              className="relative"
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
+            </div>
+
+            {/* Image */}
+            <motion.div 
+              className="relative rounded-2xl overflow-hidden shadow-lg"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               <img
-                src="https://images.pexels.com/photos/3182773/pexels-photo-3182773.jpeg?auto=compress&cs=tinysrgb&w=600"
-                alt="Team collaboration"
-                className="rounded-2xl shadow-2xl"
+                src="https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=800"
+                alt="Our Story - XShare team working"
+                className="w-full h-full object-cover"
               />
-              <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-gradient-to-br from-orange-500 to-teal-500 rounded-2xl -z-10"></div>
             </motion.div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* Values Section */}
+      {/* Values Section (gradient borders) */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
@@ -185,10 +189,12 @@ const About = () => {
             {values.map((value, index) => (
               <motion.div
                 key={index}
-                className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 text-center"
+                className="bg-white p-8 rounded-2xl shadow-lg border-2 border-transparent
+                           hover:border-orange-500 transition-all duration-300 text-center"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
+                whileHover={{ scale: 1.05 }}
               >
                 <div className="w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center text-orange-600 mb-6 mx-auto">
                   {value.icon}
@@ -201,7 +207,7 @@ const About = () => {
         </div>
       </section>
 
-      {/* Team Section */}
+      {/* Team Section (gradient borders) */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
@@ -222,10 +228,12 @@ const About = () => {
             {team.map((member, index) => (
               <motion.div
                 key={index}
-                className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden"
+                className="bg-white rounded-2xl shadow-lg border-2 border-transparent 
+                           hover:border-orange-500 hover:shadow-xl transition-all duration-300 overflow-hidden"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
+                whileHover={{ scale: 1.05 }}
               >
                 <img
                   src={member.image}
@@ -243,7 +251,7 @@ const About = () => {
         </div>
       </section>
 
-      {/* Partners Section */}
+      {/* Partners Section (gradient borders) */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
@@ -267,12 +275,15 @@ const About = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             {partners.map((partner, index) => (
-              <div
+              <motion.div
                 key={index}
-                className="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 text-center"
+                className="bg-white p-4 rounded-xl border-2 border-transparent shadow-sm 
+                           text-center transition-all duration-300 
+                           hover:border-orange-500 hover:shadow-lg"
+                whileHover={{ scale: 1.05 }}
               >
                 <span className="text-gray-700 font-semibold text-sm">{partner}</span>
-              </div>
+              </motion.div>
             ))}
           </motion.div>
         </div>
@@ -280,30 +291,30 @@ const About = () => {
 
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-orange-600 to-teal-600">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
-            className="text-center"
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
+          <motion.h2 
+            className="text-4xl md:text-5xl font-bold mb-6"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              Join Our Mission
-            </h2>
-            <p className="text-xl text-orange-100 mb-8 max-w-2xl mx-auto">
-              Be part of a community that's transforming how people navigate their career journeys. 
-              Together, we can make career growth accessible to everyone.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="inline-flex items-center bg-white text-orange-600 px-8 py-4 rounded-xl font-semibold text-lg hover:bg-orange-50 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
-                Get Started Today
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </button>
-              <button className="inline-flex items-center bg-transparent border-2 border-white text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-white hover:text-orange-600 transition-all duration-300 transform hover:scale-105">
-                Learn More
-              </button>
-            </div>
-          </motion.div>
+            Ready to Share Your Experience?
+          </motion.h2>
+          <motion.p 
+            className="text-xl mb-10 max-w-2xl mx-auto"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            Join thousands of professionals who are shaping the future of career development through authentic experience sharing.
+          </motion.p>
+          <motion.button 
+            className="bg-white text-orange-600 px-8 py-4 rounded-full font-semibold text-lg flex items-center mx-auto gap-2 hover:bg-orange-50 transition-colors"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            Start Sharing <ArrowRight className="w-5 h-5" />
+          </motion.button>
         </div>
       </section>
     </div>

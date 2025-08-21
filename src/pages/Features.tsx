@@ -9,72 +9,46 @@ const Features = () => {
       title: "Experience Library",
       description: "Access thousands of detailed interview experiences from top companies across industries.",
       features: ["Real interview questions", "Company-specific insights", "Detailed feedback", "Success strategies"],
-      color: "from-blue-500 to-blue-600"
+      color: "from-blue-500 to-blue-600",
+      image: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
     },
     {
       icon: <MessageSquare className="w-8 h-8" />,
       title: "Q&A Forum",
       description: "Get your questions answered by industry professionals and experienced community members.",
       features: ["Expert answers", "Community voting", "Topic categorization", "Real-time discussions"],
-      color: "from-green-500 to-green-600"
+      color: "from-green-500 to-green-600",
+      image: "https://images.unsplash.com/photo-1516321497487-e288fb19713f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
     },
     {
       icon: <Download className="w-8 h-8" />,
       title: "Resource Hub",
       description: "Download professionally crafted templates, guides, and tools to accelerate your career.",
       features: ["Resume templates", "Cover letter guides", "Interview checklists", "Salary negotiation tips"],
-      color: "from-purple-500 to-purple-600"
+      color: "from-purple-500 to-purple-600",
+      // FIX: Replaced broken Unsplash URL with a new, working one.
+      image: "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1173&q=80"
     },
     {
       icon: <Award className="w-8 h-8" />,
       title: "Rewards System",
       description: "Earn points and badges for contributing to the community and helping others succeed.",
       features: ["Point-based system", "Achievement badges", "Leaderboards", "Exclusive rewards"],
-      color: "from-orange-500 to-orange-600"
+      color: "from-orange-500 to-orange-600",
+      // FIX: Replaced broken Unsplash URL with a new, working one.
+      image: "https://images.unsplash.com/photo-1579532537598-459ecdaf39cc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80"
     }
   ];
 
   const additionalFeatures = [
-    {
-      icon: <Search className="w-6 h-6" />,
-      title: "Advanced Search",
-      description: "Find exactly what you need with powerful search and filtering capabilities."
-    },
-    {
-      icon: <Filter className="w-6 h-6" />,
-      title: "Smart Filters",
-      description: "Filter content by company, role, difficulty level, and more."
-    },
-    {
-      icon: <Users className="w-6 h-6" />,
-      title: "Community Network",
-      description: "Connect with professionals in your industry and build valuable relationships."
-    },
-    {
-      icon: <TrendingUp className="w-6 h-6" />,
-      title: "Career Tracking",
-      description: "Track your progress and see how your career journey unfolds over time."
-    },
-    {
-      icon: <Shield className="w-6 h-6" />,
-      title: "Privacy First",
-      description: "Your personal information is protected with enterprise-grade security."
-    },
-    {
-      icon: <Zap className="w-6 h-6" />,
-      title: "Real-time Updates",
-      description: "Get notified instantly about new content, answers, and community activity."
-    },
-    {
-      icon: <Heart className="w-6 h-6" />,
-      title: "Personalized Feed",
-      description: "Receive content recommendations tailored to your interests and career goals."
-    },
-    {
-      icon: <Globe className="w-6 h-6" />,
-      title: "Global Community",
-      description: "Connect with professionals from around the world and diverse backgrounds."
-    }
+    { icon: <Search className="w-6 h-6" />, title: "Advanced Search", description: "Find exactly what you need with powerful search and filtering capabilities." },
+    { icon: <Filter className="w-6 h-6" />, title: "Smart Filters", description: "Filter content by company, role, difficulty level, and more." },
+    { icon: <Users className="w-6 h-6" />, title: "Community Network", description: "Connect with professionals in your industry and build valuable relationships." },
+    { icon: <TrendingUp className="w-6 h-6" />, title: "Career Tracking", description: "Track your progress and see how your career journey unfolds over time." },
+    { icon: <Shield className="w-6 h-6" />, title: "Privacy First", description: "Your personal information is protected with enterprise-grade security." },
+    { icon: <Zap className="w-6 h-6" />, title: "Real-time Updates", description: "Get notified instantly about new content, answers, and community activity." },
+    { icon: <Heart className="w-6 h-6" />, title: "Personalized Feed", description: "Receive content recommendations tailored to your interests and career goals." },
+    { icon: <Globe className="w-6 h-6" />, title: "Global Community", description: "Connect with professionals from around the world and diverse backgrounds." }
   ];
 
   const comparisonTable = [
@@ -89,11 +63,11 @@ const Features = () => {
   ];
 
   return (
-    <div className="space-y-20">
+    <div className="space-y-20 bg-white">
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-orange-50 to-teal-50 py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
+          <motion.div
             className="text-center max-w-4xl mx-auto"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
@@ -106,7 +80,7 @@ const Features = () => {
               </span>
             </h1>
             <p className="text-xl md:text-2xl text-gray-600 mb-8 leading-relaxed">
-              Discover all the tools and resources you need to accelerate your career journey 
+              Discover all the tools and resources you need to accelerate your career journey
               and achieve your professional goals.
             </p>
             <Link
@@ -122,7 +96,7 @@ const Features = () => {
       {/* Main Features */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
+          <motion.div
             className="text-center mb-16"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -145,13 +119,13 @@ const Features = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: index * 0.2 }}
               >
+                {/* Text Content */}
                 <div className={index % 2 === 1 ? 'lg:order-2' : ''}>
                   <div className={`w-16 h-16 bg-gradient-to-r ${feature.color} rounded-2xl flex items-center justify-center text-white mb-6`}>
                     {feature.icon}
                   </div>
                   <h3 className="text-3xl font-bold text-gray-900 mb-4">{feature.title}</h3>
                   <p className="text-xl text-gray-600 mb-6 leading-relaxed">{feature.description}</p>
-                  
                   <ul className="space-y-3">
                     {feature.features.map((item, itemIndex) => (
                       <li key={itemIndex} className="flex items-center space-x-3">
@@ -160,7 +134,6 @@ const Features = () => {
                       </li>
                     ))}
                   </ul>
-                  
                   <Link
                     to={
                       feature.title === 'Experience Library' ? '/experience-library' :
@@ -176,21 +149,18 @@ const Features = () => {
                     </svg>
                   </Link>
                 </div>
-                
+
+                {/* Image Content */}
                 <div className={index % 2 === 1 ? 'lg:order-1' : ''}>
                   <div className="relative">
                     <div className={`absolute inset-0 bg-gradient-to-r ${feature.color} rounded-2xl transform rotate-3`}></div>
-                    <div className="relative bg-white p-8 rounded-2xl shadow-2xl">
-                      <div className="space-y-4">
-                        <div className="h-4 bg-gray-200 rounded-full"></div>
-                        <div className="h-4 bg-gray-200 rounded-full w-3/4"></div>
-                        <div className="h-4 bg-gray-200 rounded-full w-1/2"></div>
-                        <div className="space-y-2 mt-6">
-                          <div className="h-3 bg-gray-100 rounded w-full"></div>
-                          <div className="h-3 bg-gray-100 rounded w-5/6"></div>
-                          <div className="h-3 bg-gray-100 rounded w-4/6"></div>
-                        </div>
-                      </div>
+                    {/* FIX: Using a fixed height (h-96) for reliability instead of aspect-ratio */}
+                    <div className="relative rounded-2xl shadow-2xl overflow-hidden h-96">
+                      <img
+                        src={feature.image}
+                        alt={feature.title}
+                        className="w-full h-full object-cover object-center"
+                      />
                     </div>
                   </div>
                 </div>
@@ -203,7 +173,7 @@ const Features = () => {
       {/* Additional Features Grid */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
+          <motion.div
             className="text-center mb-16"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -240,7 +210,7 @@ const Features = () => {
       {/* Comparison Table */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
+          <motion.div
             className="text-center mb-16"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -331,7 +301,7 @@ const Features = () => {
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-orange-600 to-teal-600">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
+          <motion.div
             className="text-center"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
