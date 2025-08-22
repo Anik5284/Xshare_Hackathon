@@ -26,7 +26,6 @@ const Features = () => {
       description: "Download professionally crafted templates, guides, and tools to accelerate your career.",
       features: ["Resume templates", "Cover letter guides", "Interview checklists", "Salary negotiation tips"],
       color: "from-purple-500 to-purple-600",
-      // FIX: Replaced broken Unsplash URL with a new, working one.
       image: "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1173&q=80"
     },
     {
@@ -35,8 +34,8 @@ const Features = () => {
       description: "Earn points and badges for contributing to the community and helping others succeed.",
       features: ["Point-based system", "Achievement badges", "Leaderboards", "Exclusive rewards"],
       color: "from-orange-500 to-orange-600",
-      // FIX: Replaced broken Unsplash URL with a new, working one.
-      image: "https://images.unsplash.com/photo-1579532537598-459ecdaf39cc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80"
+      // Added a direct link to an Unsplash photo for testing.
+      image: "https://images.unsplash.com/photo-1578269174936-2709b6aeb913?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
     }
   ];
 
@@ -154,7 +153,6 @@ const Features = () => {
                 <div className={index % 2 === 1 ? 'lg:order-1' : ''}>
                   <div className="relative">
                     <div className={`absolute inset-0 bg-gradient-to-r ${feature.color} rounded-2xl transform rotate-3`}></div>
-                    {/* FIX: Using a fixed height (h-96) for reliability instead of aspect-ratio */}
                     <div className="relative rounded-2xl shadow-2xl overflow-hidden h-96">
                       <img
                         src={feature.image}
@@ -191,16 +189,22 @@ const Features = () => {
             {additionalFeatures.map((feature, index) => (
               <motion.div
                 key={index}
-                className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+                className="relative group p-px rounded-xl overflow-hidden"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
               >
-                <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center text-orange-600 mb-4">
-                  {feature.icon}
+                {/* Colorful gradient border on hover */}
+                <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-orange-500 to-teal-500 opacity-0 transition-all duration-300 group-hover:opacity-100"></div>
+
+                {/* Card content */}
+                <div className="relative bg-white p-6 rounded-xl shadow-lg transition-all duration-300 transform group-hover:shadow-xl group-hover:-translate-y-2">
+                  <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center text-orange-600 mb-4">
+                    {feature.icon}
+                  </div>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">{feature.title}</h3>
+                  <p className="text-gray-600 text-sm leading-relaxed">{feature.description}</p>
                 </div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">{feature.title}</h3>
-                <p className="text-gray-600 text-sm leading-relaxed">{feature.description}</p>
               </motion.div>
             ))}
           </div>
@@ -225,74 +229,80 @@ const Features = () => {
           </motion.div>
 
           <motion.div
-            className="bg-white rounded-2xl shadow-2xl overflow-hidden"
+            className="relative group p-px rounded-2xl overflow-hidden"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <div className="overflow-x-auto">
-              <table className="w-full">
-                <thead className="bg-gray-50">
-                  <tr>
-                    <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900">Feature</th>
-                    <th className="px-6 py-4 text-center text-sm font-semibold text-orange-600">XShare</th>
-                    <th className="px-6 py-4 text-center text-sm font-semibold text-gray-600">Competitor A</th>
-                    <th className="px-6 py-4 text-center text-sm font-semibold text-gray-600">Competitor B</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-gray-200">
-                  {comparisonTable.map((row, index) => (
-                    <tr key={index} className="hover:bg-gray-50 transition-colors duration-200">
-                      <td className="px-6 py-4 text-sm font-medium text-gray-900">{row.feature}</td>
-                      <td className="px-6 py-4 text-center">
-                        {row.xshare ? (
-                          <span className="inline-flex items-center justify-center w-6 h-6 bg-green-100 rounded-full">
-                            <svg className="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
-                              <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                            </svg>
-                          </span>
-                        ) : (
-                          <span className="inline-flex items-center justify-center w-6 h-6 bg-red-100 rounded-full">
-                            <svg className="w-4 h-4 text-red-600" fill="currentColor" viewBox="0 0 20 20">
-                              <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
-                            </svg>
-                          </span>
-                        )}
-                      </td>
-                      <td className="px-6 py-4 text-center">
-                        {row.competitor1 ? (
-                          <span className="inline-flex items-center justify-center w-6 h-6 bg-green-100 rounded-full">
-                            <svg className="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
-                              <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                            </svg>
-                          </span>
-                        ) : (
-                          <span className="inline-flex items-center justify-center w-6 h-6 bg-red-100 rounded-full">
-                            <svg className="w-4 h-4 text-red-600" fill="currentColor" viewBox="0 0 20 20">
-                              <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
-                            </svg>
-                          </span>
-                        )}
-                      </td>
-                      <td className="px-6 py-4 text-center">
-                        {row.competitor2 ? (
-                          <span className="inline-flex items-center justify-center w-6 h-6 bg-green-100 rounded-full">
-                            <svg className="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
-                              <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                            </svg>
-                          </span>
-                        ) : (
-                          <span className="inline-flex items-center justify-center w-6 h-6 bg-red-100 rounded-full">
-                            <svg className="w-4 h-4 text-red-600" fill="currentColor" viewBox="0 0 20 20">
-                              <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
-                            </svg>
-                          </span>
-                        )}
-                      </td>
+            {/* Colorful gradient border on hover */}
+            <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-orange-500 to-teal-500 opacity-0 transition-all duration-300 group-hover:opacity-100"></div>
+
+            {/* Main content container */}
+            <div className="relative bg-white rounded-2xl shadow-2xl">
+              <div className="overflow-x-auto">
+                <table className="w-full">
+                  <thead className="bg-gray-50">
+                    <tr>
+                      <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900">Feature</th>
+                      <th className="px-6 py-4 text-center text-sm font-semibold text-orange-600">XShare</th>
+                      <th className="px-6 py-4 text-center text-sm font-semibold text-gray-600">Competitor A</th>
+                      <th className="px-6 py-4 text-center text-sm font-semibold text-gray-600">Competitor B</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody className="divide-y divide-gray-200">
+                    {comparisonTable.map((row, index) => (
+                      <tr key={index} className="hover:bg-gray-50 transition-colors duration-200">
+                        <td className="px-6 py-4 text-sm font-medium text-gray-900">{row.feature}</td>
+                        <td className="px-6 py-4 text-center">
+                          {row.xshare ? (
+                            <span className="inline-flex items-center justify-center w-6 h-6 bg-green-100 rounded-full">
+                              <svg className="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                              </svg>
+                            </span>
+                          ) : (
+                            <span className="inline-flex items-center justify-center w-6 h-6 bg-red-100 rounded-full">
+                              <svg className="w-4 h-4 text-red-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
+                              </svg>
+                            </span>
+                          )}
+                        </td>
+                        <td className="px-6 py-4 text-center">
+                          {row.competitor1 ? (
+                            <span className="inline-flex items-center justify-center w-6 h-6 bg-green-100 rounded-full">
+                              <svg className="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                              </svg>
+                            </span>
+                          ) : (
+                            <span className="inline-flex items-center justify-center w-6 h-6 bg-red-100 rounded-full">
+                              <svg className="w-4 h-4 text-red-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
+                              </svg>
+                            </span>
+                          )}
+                        </td>
+                        <td className="px-6 py-4 text-center">
+                          {row.competitor2 ? (
+                            <span className="inline-flex items-center justify-center w-6 h-6 bg-green-100 rounded-full">
+                              <svg className="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                              </svg>
+                            </span>
+                          ) : (
+                            <span className="inline-flex items-center justify-center w-6 h-6 bg-red-100 rounded-full">
+                              <svg className="w-4 h-4 text-red-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
+                              </svg>
+                            </span>
+                          )}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </div>
           </motion.div>
         </div>
