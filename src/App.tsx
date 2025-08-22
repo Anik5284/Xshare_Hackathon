@@ -14,6 +14,8 @@ import SignUp from './pages/SignUp';
 import Dashboard from './pages/Dashboard';
 import ExperienceLibrary from './pages/ExperienceLibrary';
 import NotFound from './pages/NotFound';
+import Admin from './pages/Admin';
+
 
 function App() {
   return (
@@ -29,6 +31,8 @@ function App() {
               <Route path="/features" element={<Features />} />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<SignUp />} />
+              <Route path="/signup" element={<SignUp />} />
+              <Route path="/admin" element={<Admin />} />
               
               {/* Protected Routes */}
               <Route path="/dashboard" element={
