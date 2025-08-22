@@ -10,7 +10,7 @@ const SignUp = () => {
     name: '',
     email: '',
     contact: '',
-    role: 'student' as 'student' | 'professional' | 'mentor',
+    role: 'student' as 'student' | 'professional', // Removed 'mentor' from the type
     password: '',
     confirmPassword: ''
   });
@@ -24,7 +24,7 @@ const SignUp = () => {
 
   const validateStep = (step: number): boolean => {
     setError('');
-    
+
     switch (step) {
       case 1:
         if (!formData.name.trim()) {
@@ -44,10 +44,10 @@ const SignUp = () => {
           return false;
         }
         return true;
-      
+
       case 2:
         return formData.role !== '';
-      
+
       case 3:
         if (formData.password.length < 6) {
           setError('Password must be at least 6 characters');
@@ -58,7 +58,7 @@ const SignUp = () => {
           return false;
         }
         return true;
-      
+
       default:
         return true;
     }
@@ -274,7 +274,7 @@ const SignUp = () => {
                     {[
                       { value: 'student', label: 'Student', desc: 'Looking for internships or entry-level positions' },
                       { value: 'professional', label: 'Professional', desc: 'Experienced worker looking for career growth' },
-                      { value: 'mentor', label: 'Mentor', desc: 'Industry expert wanting to help others' }
+                      // Removed the 'mentor' option from this list
                     ].map((option) => (
                       <label key={option.value} className="block">
                         <input
