@@ -194,15 +194,19 @@ const Home = () => {
                 key={index}
                 whileHover={{ scale: 1.05, rotate: 1 }}
                 transition={{ type: "spring", stiffness: 300 }}
-                className="relative group bg-white p-8 rounded-2xl shadow-lg border border-transparent hover:border-teal-500 hover:shadow-2xl transition-all duration-300 text-center"
+                className="relative group bg-white p-8 rounded-2xl shadow-lg border border-transparent hover:border-[#88B152] hover:shadow-2xl transition-all duration-300 text-center overflow-hidden"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
               >
-                {/* Glow Effect */}
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-orange-500 to-teal-500 opacity-0 group-hover:opacity-10 blur-xl transition duration-500"></div>
+                {/* Blended Overlay Background */}
+                <div className="absolute inset-0 flex items-center justify-center opacity-10">
+                  <div className="relative w-[200px] h-[200px] bg-[#6A994E] mix-blend-multiply">
+                    <div className="absolute inset-0 bg-[#A7C957] mix-blend-screen"></div>
+                  </div>
+                </div>
 
-                <div className="w-20 h-20 bg-gradient-to-br from-orange-500 to-teal-500 rounded-full flex items-center justify-center text-white font-bold text-2xl mb-6 mx-auto relative z-10">
+                <div className="w-20 h-20 bg-gradient-to-br from-[#88B152] to-[#6A994E] rounded-full flex items-center justify-center text-white font-bold text-2xl mb-6 mx-auto relative z-10">
                   {step.number}
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-4 relative z-10">
